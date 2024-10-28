@@ -1,0 +1,90 @@
+# Sign Up
+http POST localhost:5000/api/users/sign-up \
+  username="testuser" \
+  password="password123"
+
+  ResponseJSON: 
+  {
+  "userid": "number",
+  "username": "string"
+}
+
+# Sign In
+http POST localhost:5000/api/users/sign-in \
+  username="testuser" \
+  password="password123"
+
+  ResponsJSON:
+  {
+  "token": "string",
+  "user": {
+    "userid": "number",
+    "username": "string"
+  }
+}
+
+  # Get all movies
+http GET localhost:5000/api/movies \
+
+  ResponseJSON: 
+[
+  {
+    "movieid": "number",
+    "userid": "number",
+    "title": "string",
+    "summary": "string",
+    "imdblink": "string",
+    "rating": "number",
+    "createdat": "string",
+    "updatedat": "string"
+  }
+]
+
+# Create movie
+http POST localhost:5000/api/movies \
+  title="The Matrix" \
+  summary="A computer programmer discovers reality isn't what it seems" \
+  imdbLink="https://www.imdb.com/title/tt0133093/" \
+  rating:=5 \
+  userId:=1
+
+  ResponseJSON: 
+  {
+  "movieid": "number",
+  "userid": "number",
+  "title": "string",
+  "summary": "string",
+  "imdblink": "string",
+  "rating": "number",
+  "createdat": "string",
+  "updatedat": "string"
+}
+
+# Update movie
+http PUT localhost:5000/api/movies/{id} \
+  title="The Matrix" \
+  summary="Updated summary" \
+  imdbLink="https://www.imdb.com/title/tt0133093/" \
+  rating:=4
+
+
+ResponseJSON:
+{
+  "movieid": "number",
+  "userid": "number",
+  "title": "string",
+  "summary": "string",
+  "imdblink": "string",
+  "rating": "number",
+  "createdat": "string",
+  "updatedat": "string"
+}
+
+
+# Delete movie
+http DELETE localhost:5000/api/movies/{id} \
+
+ResponseJSON:
+  {
+  "message": "Movie deleted successfully"
+}
